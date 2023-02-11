@@ -2,15 +2,56 @@
 
     Is there an extension that suggests javascript methods? The intellicense sucks atm.
 
+### Quite a mess on keeping track of where props are being channeled.
+
+    I need better variable and property names or a wireframe picture that I can use
+
+### To render things properly, use a function rather than joining new data to existing.(with useState)
+
+    Using set state to simply join new array with existing array will lead to wrong snapshot of the previous array. But by using a function, React will prioritize the order of execution.
+
+### Rendering List of data. "Js array map" -good google key words, to find MDN help
+
+### State-less components vid 60
+
+    FilterYear recieves function that sets UseState in parent component. and the value={variable}(used in the filter dropdown field. Maybe it resets after a render?). So we don't need a useState in FilterYear component.
+
 ### sending data through components ie props
 
-    From user-form to above components. by setting a function up in the parent comp,
+    We use useState const [enteredTitle, setEnteredTitle] = useState("");
+
+    From user-form, you recieve the data through "onChange={funcHandler}"
+
+        const funcHandler = (event) => {
+            setEnteredTitle(event.target.value);    //data is set in useState
+        };
+
+    Also "<form onSubmit={submitHandler}>"      //submit button that stores the data in an object.
+
+        const submitHandler = (event) => {
+            event.preventDefault(); //preventing the inbuilt submit function. (I've noticed that it reloads the page when clicked.)
+            //Step 1.a      //getting the data
+            const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate),
+        };
+
+            input: type, value, onChange(funcInput)
+
+        funcInput=(event)=> setEnteredTitle(event.target.value)
+
+            Getting the event.target.value through the funcInput
+
     Calling that function in the child comp, and placing the data in it.
-        props.onSaveExpenseData(expenseData)    props.onSaveExpenseData is the function defined in the parent comp. expenseData is the object being passed to it.
+
+        props.onSaveExpenseData(expenseData)
+
+        props.onSaveExpenseData is the function defined in the parent comp. expenseData is the object being passed to it.
 
 ### value attribute in the html code.
 
-    It lets you set value. Here it's used for emptying the field after the user clicks on "Add Expense".
+    It lets you set value. in the form's input field, it's used for emptying the field after the user clicks on "Add Expense".
 
 ### From Submit handler
 

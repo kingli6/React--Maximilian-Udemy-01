@@ -1,8 +1,10 @@
+// import React, { useState } from "react";
 import React, { useState } from "react";
 import "./Expenses.component.css";
 import ExpenseItem from "./ExpenseItem.component";
+import ExpensesFilter from "../NewExpense/ExpensesFilter";
 
-const expenses = [
+const dummyExpenses = [
   {
     id: "e1",
     title: "Toilet Paper",
@@ -23,37 +25,35 @@ const expenses = [
     date: new Date(2021, 5, 12),
   },
 ];
-function Expenses() {
-  // const [datafromForm, setDatafromForm] = useState({});
-  // setDatafromForm(props.item[0]);
+//i need to send the new data from the form through props
+function Expenses(props) {
+  const [selectedFilter, setSelectedFilter] = useState("");
+  const [expensesArray, setExpensesArray] = useState(dummyExpenses);
 
+  const addExpenseHandler = (expense) => {
+    setExpensesArray((prevExpense) => {
+      return [props.newExpense, ...prevExpense];
+    });
+  };
+
+  const yearFilterHandler = (event) => {
+    setSelectedFilter(event);
+    //this needs a filter function.
+  };
   return (
     <div className="expenses">
-      {/* <ExpenseItem
-        title={datafromForm[0].title}
-        amount={datafromForm[0].amount}
-        date={datafromForm[0].date}
-      /> */}
-      <ExpenseItem
-        title={expenses[0].title}
-        amount={expenses[0].amount}
-        date={expenses[0].date}
+      <ExpensesFilter
+        selectedYear={selectedFilter}
+        onChangeFilter={yearFilterHandler}
       />
-      <ExpenseItem
-        title={expenses[1].title}
-        amount={expenses[1].amount}
-        date={expenses[1].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expenses[2].title}
-        amount={expenses[2].amount}
-        date={expenses[2].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expenses[3].title}
-        amount={expenses[3].amount}
-        date={expenses[3].date}
-      ></ExpenseItem>
+      {expensesArray.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      ))}
     </div>
   );
 }

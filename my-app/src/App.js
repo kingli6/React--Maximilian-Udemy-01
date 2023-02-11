@@ -1,21 +1,21 @@
+import React, { useState } from "react";
 import "./App.css";
 import Expenses from "./components/Expense/Expenses.component";
 import NewExpense from "./components/NewExpense/NewExpense";
 import Testcomponent from "./components/Test.Component";
 
 const App = () => {
-  let datafromForm = [];
+  const [passingObj, setPassingObj] = useState("");
 
+  //Q. Can i pass the incoming object without a useState?
   const addExpenseHandler = (incomingObject) => {
-    datafromForm[0] = incomingObject;
-    console.log("in app js");
-    console.log(incomingObject);
+    setPassingObj(incomingObject); //Q. I'm not creating a return function cause I'm not connecting any array
   };
   return (
     <div>
       <Testcomponent />
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses></Expenses>
+      <Expenses newExpense={passingObj}></Expenses>
     </div>
   );
 };
