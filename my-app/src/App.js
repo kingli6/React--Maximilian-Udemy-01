@@ -4,18 +4,42 @@ import Expenses from "./components/Expense/Expenses.component";
 import NewExpense from "./components/NewExpense/NewExpense";
 import Testcomponent from "./components/Test.Component";
 
+const dummyExpenses = [
+  {
+    id: "e1",
+    title: "Toilet Paper",
+    amount: 94.12,
+    date: new Date(2020, 7, 14),
+  },
+  { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
+  {
+    id: "e3",
+    title: "Car Insurance",
+    amount: 294.67,
+    date: new Date(2021, 2, 28),
+  },
+  {
+    id: "e4",
+    title: "New Desk (Wooden)",
+    amount: 450,
+    date: new Date(2021, 5, 12),
+  },
+];
+
 const App = () => {
-  const [passingObj, setPassingObj] = useState("");
+  const [expenses, setExpenses] = useState(dummyExpenses);
 
   //Q. Can i pass the incoming object without a useState?
   const addExpenseHandler = (incomingObject) => {
-    setPassingObj(incomingObject); //Q. I'm not creating a return function cause I'm not connecting any array
+    setExpenses((expenses) => {
+      return [incomingObject, ...expenses];
+    });
   };
   return (
     <div>
       <Testcomponent />
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses newExpense={passingObj}></Expenses>
+      <Expenses expensesArray={expenses}></Expenses>
     </div>
   );
 };
