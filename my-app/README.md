@@ -2,6 +2,26 @@
 
     Is there an extension that suggests javascript methods? The intellicense sucks atm.
 
+### passing through props exercise.
+
+    https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/quiz/5775770#overview    //I had hard time figuring it out. Need practice.
+
+    const Dummytodo = [
+        'Learn React',
+        'Practice React',
+        'Profit!'
+    ];
+
+    export default function App() {
+        return (
+            <ul>
+            {Dummytodo.map(todo =>
+                <Todo text={todo}/>
+            )}
+            </ul>
+        );
+    }
+
 ### Quite a mess on keeping track of where props are being channeled.
 
     I need better variable and property names or a wireframe picture that I can use
