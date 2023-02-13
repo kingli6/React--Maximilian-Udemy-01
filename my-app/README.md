@@ -2,6 +2,29 @@
 
     Is there an extension that suggests javascript methods? The intellicense sucks atm.
 
+### tiny notes
+
+    return statements in function
+
+    1. return {}  // curly braces when returning an object. What is brackets for? just regular
+    2. you can add function to object   https://www.youtube.com/watch?v=PkZNo7MFNFg&list=WL&index=4&t=73s   timestamp 3:12:00
+        - learn how to use it well.
+    3. const { tomorrow : tempOftomorroww} = listofTempretures;
+        //you just return a value by name a key(tommorrow), value(tempOftomorroww)
+        //Learn this destructuring only key/value
+    3b.
+        Destructuring nested key and value.
+
+            const { tomorrow: {minMax : valueVariableIcatch}} = OBJECTwithNestedObjects;
+
+            return valueVariableIcatch;
+
+            // The table
+            const LOCAL_FORECAST = {
+                today:{ obj1: 10, minMax: 20}
+                tomorrow:{ obj1: 10, minMax: 20}
+            }
+
 ### passing through props exercise.
 
     https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/quiz/5775770#overview    //I had hard time figuring it out. Need practice.
