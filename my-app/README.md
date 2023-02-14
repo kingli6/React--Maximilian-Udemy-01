@@ -29,6 +29,21 @@
 
     https://www.youtube.com/watch?v=rCm5RVYKWVg
 
+### Using && for the filter year and map function
+
+    {filteredExpenses.length === 0 && (
+        <p>No expenses for year {selectedFilter}</p>
+      )}
+      {filteredExpenses.length > 0 &&
+        filteredExpenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
+
 ### for and if is not allowed in html area. But ternary works
 
     also, understand where ( ) are used and {} are used.
