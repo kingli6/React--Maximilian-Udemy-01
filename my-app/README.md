@@ -29,6 +29,12 @@
 
     https://www.youtube.com/watch?v=rCm5RVYKWVg
 
+### Moving the logic outside of the html area
+
+    let expensesContent = <p>No expenses found.</p>;
+
+    if ()
+
 ### Using && for the filter year and map function
 
     {filteredExpenses.length === 0 && (
