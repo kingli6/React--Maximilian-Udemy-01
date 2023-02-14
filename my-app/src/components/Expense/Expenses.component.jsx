@@ -7,7 +7,7 @@ import ExpensesFilter from "../NewExpense/ExpensesFilter";
 //i need to send the new data from the form through props
 function Expenses(props) {
   const [selectedFilter, setSelectedFilter] = useState("");
-
+  // const []
   // a. ExpensesFilter is in the wrong folder and maybe needs rewiring.
   //B. I need to use the function below in NewExpense. But we are in the other side.
   //the data that is coming through form needs to be placed in Expenses or newExpense component.
@@ -15,24 +15,36 @@ function Expenses(props) {
   // I have the new expense item, but I don't know how to initiate this function that adds the
   // incoming data to the existing.
 
-  const yearFilterHandler = (event) => {
+  const yearFilterChangeHandler = (event) => {
     setSelectedFilter(event);
-    //this needs a filter function.
   };
+
+  //WHen does this run?
+  const filteredExpenses = props.expensesArray.filter((item) => {
+    return item.date.getFullYear().toString() === selectedFilter;
+  });
+  //NICE ONE! [] work on other debugging tool
+  // console.log(
+  //   props.expensesArray.map((item) => item.date.getFullYear().toString())
+  // );
   return (
     <div className="expenses">
       <ExpensesFilter
         selectedYear={selectedFilter}
-        onChangeFilter={yearFilterHandler}
+        onChangeFilter={yearFilterChangeHandler}
       />
-      {props.expensesArray.map((expense) => (
-        <ExpenseItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-      ))}
+      {filteredExpenses.length === 0 ? (
+        <p>No expenses for year {selectedFilter}</p>
+      ) : (
+        filteredExpenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))
+      )}
     </div>
   );
 }

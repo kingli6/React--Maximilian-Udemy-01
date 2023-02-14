@@ -4,8 +4,9 @@ import "./ExpensesFilter.css";
 
 const ExpensesFilter = (props) => {
   const yearDropDownHandler = (event) => {
-    props.yearFilterHandler(event.target.value);
+    props.onChangeFilter(event.target.value);
   };
+  // T. need to have a no-value in the filter or ALL option to pick everything.
   //q. should i have the parent function inside yearDropDownHandler? A. Yes
 
   return (
