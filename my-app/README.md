@@ -30,6 +30,18 @@
 
     --------------------------------------------------------------------------------------------
 
+### using return to choose which html block to render
+
+    https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25634226?start=0#overview
+    You return either (a) let the if statment trigger or the (b) the normal hmtl-section return
+
+(a)
+if(props.items.length === 0){  
+ return <h2> code...</h2>
+}
+(b)
+return{<ul> code...</ul>}
+
 ### Moving the logic outside of the html area
 
     let expensesContent = <p>No expenses found.</p>;
