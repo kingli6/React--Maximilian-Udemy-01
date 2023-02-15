@@ -26,75 +26,103 @@
                 tomorrow:{ obj1: 10, minMax: 20}
             }
     4. const Communities: React.FC<CommunitiesProps> = () ⇒ //what does this line do?
+     https://www.youtube.com/watch?v=rCm5RVYKWVg
 
-    https://www.youtube.com/watch?v=rCm5RVYKWVg
+    --------------------------------------------------------------------------------------------
 
 ### Moving the logic outside of the html area
 
     let expensesContent = <p>No expenses found.</p>;
 
-    if ()
+if (filteredExpenses.length > 0) {
+expensesContent = filteredExpenses.map((expense) => (
+<ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+));
+}
+
+    ### Example for a exercise https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/quiz/5775802#overview
+
+return (
+
+<div>
+{isDeleting ? <div id="alert">
+<h2>Are you sure?</h2>
+<p>These changes can't be reverted!</p>
+<button onClick={proceedHandler}>Proceed</button>
+</div> : ''}
+<button onClick={deleteHandler}>Delete</button>
+</div>  
+);
 
 ### Using && for the filter year and map function
 
-    {filteredExpenses.length === 0 && (
-        <p>No expenses for year {selectedFilter}</p>
-      )}
-      {filteredExpenses.length > 0 &&
-        filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+{filteredExpenses.length === 0 && (
+
+<p>No expenses for year {selectedFilter}</p>
+)}
+{filteredExpenses.length > 0 &&
+filteredExpenses.map((expense) => (
+<ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+        />
+))}
 
 ### for and if is not allowed in html area. But ternary works
 
     also, understand where ( ) are used and {} are used.
 
-    {
-        filteredExpenses.length === 0 ? (
-        <p>No expenses for year {selectedFilter}</p>
-        ) : (
-                filteredExpenses.map((expense) => (
-                <ExpenseItem
-                    key={expense.id}
-                    title={expense.title}
-                    amount={expense.amount}
-                    date={expense.date}
-                />
-                ))
-            )
-      }
+{
+filteredExpenses.length === 0 ? (
+
+<p>No expenses for year {selectedFilter}</p>
+) : (
+filteredExpenses.map((expense) => (
+<ExpenseItem
+                key={expense.id}
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date}
+            />
+))
+)
+}
 
 ### Filter for the yearSelect component. Notice the return statement, so React runs it, prioritizes it.
 
     Q. When does this run?
-    const filteredExpenses = props.expensesArray.filter((item) => {
-        return item.date.getFullYear().toString() === selectedFilter;
-    });
+
+const filteredExpenses = props.expensesArray.filter((item) => {
+return item.date.getFullYear().toString() === selectedFilter;
+});
 
 ### passing through props exercise.
 
     https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/quiz/5775770#overview    //I had hard time figuring it out. Need practice.
 
     const Dummytodo = [
-        'Learn React',
-        'Practice React',
-        'Profit!'
+    'Learn React',
+    'Practice React',
+    'Profit!'
     ];
 
-    export default function App() {
-        return (
-            <ul>
-            {Dummytodo.map(todo =>
-                <Todo text={todo}/>
-            )}
-            </ul>
-        );
-    }
+export default function App() {
+return (
+
+<ul>
+{Dummytodo.map(todo =>
+<Todo text={todo}/>
+)}
+</ul>
+);
+}
 
 ### Quite a mess on keeping track of where props are being channeled.
 
@@ -155,18 +183,20 @@
 
     https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/quiz/5775750#overview
 
-    export default function App() {
-    const [ev, setCounter] = React.useState(0);
+        export default function App() {
+        const [ev, setCounter] = React.useState(0);
 
-    const eventHandler=()=>{
-        setCounter(prevCounter => prevCounter +1);  //<---- Notice this. A function taht returns incremental change.
-    }
-    return (
-      <div>
-        <p id="counter">{ev}</p>
-        <button onClick={eventHandler}>Increment</button>
-      </div>
-    );
+        const eventHandler=()=>{
+            setCounter(prevCounter => prevCounter +1);  //<---- Notice this. A function taht returns incremental change.
+        }
+
+return (
+
+<div>
+<p id="counter">{ev}</p>
+<button onClick={eventHandler}>Increment</button>
+</div>
+);
 
 }
 

@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 import React, { useState } from "react";
 import "./Expenses.component.css";
-import ExpenseItem from "./ExpenseItem.component";
+import ExpensesList from "./ExpensesList";
 import ExpensesFilter from "../NewExpense/ExpensesFilter";
 
 function Expenses(props) {
@@ -20,25 +20,19 @@ function Expenses(props) {
   //   props.expensesArray.map((item) => item.date.getFullYear().toString())
   // );
 
-  let expensesContent = <p>No expenses found.</p>;
+  // Place ExpenseItem comp in expenses.
+  //do the nessesary imports
 
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
-  }
+  // it needs the list of filteredExpenses.
+
   return (
     <div className="expenses">
       <ExpensesFilter
         selectedYear={selectedFilter}
         onChangeFilter={yearFilterChangeHandler}
       />
-      {expensesContent}
+      <ExpensesList filteredList={filteredExpenses} />
+      {/* {expensesContent} */}
     </div>
   );
 }
