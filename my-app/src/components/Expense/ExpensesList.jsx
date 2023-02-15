@@ -9,19 +9,23 @@ import ExpenseItem from "./ExpenseItem.component";
 // it needs the list of filteredExpenses.
 
 const ExpensesList = (props) => {
-  let expensesContent = <p className={"noExpense"}>No expenses found.</p>;
-
-  if (props.filteredList.length > 0) {
-    expensesContent = props.filteredList.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
+  if (props.filteredList.length === 0) {
+    return <h2 className="expenses-list__fallback">Found no expenses</h2>;
   }
-  return <div>{expensesContent}</div>;
+
+  return (
+    <ul>
+      {props.filteredList.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      ))}
+      ;
+    </ul>
+  );
 };
 
 export default ExpensesList;
