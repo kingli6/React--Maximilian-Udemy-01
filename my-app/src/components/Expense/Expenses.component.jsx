@@ -20,11 +20,6 @@ function Expenses(props) {
   //   props.expensesArray.map((item) => item.date.getFullYear().toString())
   // );
 
-  // Place ExpenseItem comp in expenses.
-  //do the nessesary imports
-
-  // it needs the list of filteredExpenses.
-
   return (
     <div className="expenses">
       <ExpensesFilter
